@@ -34,7 +34,6 @@ function App() {
 
     return (
         <>
-            <h1>Elenco utenti</h1>
             <UsersTable
             isLoading={isLoading}
             userData={userData}

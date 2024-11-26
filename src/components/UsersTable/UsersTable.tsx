@@ -1,4 +1,5 @@
 import {FC} from "react";
+import './UsersTable.css'
 
 import IUser from "../../models/IUser.ts";
 
@@ -7,7 +8,7 @@ const UsersTable: FC<{ userData: IUser[], isLoading: boolean }> = (props) => {
         <>
             {props.isLoading && <h3>Sto recuperando i dati...</h3>}
             {!props.isLoading &&
-                <div>
+                <div id='users-data'>
                     <table>
                         <thead>
                         <tr>

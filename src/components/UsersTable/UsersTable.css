@@ -1,0 +1,26 @@
+#users-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#users-data table{
+    border-collapse: collapse;
+}
+
+#users-data th, td{
+    border: 2px solid white;
+    padding: 0.5rem;
+}
+
+#users-data th{
+    background-color: #37538d;
+}
+
+#users-data td {
+    background-color: #577ec9;
+}
+
+h3 {
+    text-align: center;
+}
