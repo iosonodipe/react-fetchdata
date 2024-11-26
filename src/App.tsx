@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import UserTable from "./UsersTable/UserTable.tsx";
+
+import {useEffect, useState} from "react";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [userData, setUserData] = useState<Promise<any>>() //any perchè response.json restituisce una risposta any
+    const [error, setError] = useState<Error | unknown>(); //come posso rendere accettabile solo Error?
+    const [loading, setLoading] = useState<boolean>(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    useEffect(() => {
+        async function fetchUserData(url: string = 'https://jsonplaceholder.typicode.com/users'): Promise<void> {
+            try {
+                setLoading(true);
+                const response = await fetch(url)
+                const data = await response.json();
+                setLoading(false);
+                setUserData(data);
+
+                if (!response.ok) throw new Error('Errore nel recupero dei dati');
+
+            } catch (error) {
+                setError(error);
+            }
+        }
+
+        fetchUserData();
+    }, [])
+
+    return (
+        <>
+            <h1>Elenco utenti</h1>
+            <UserTable
+            loading={loading}
+            userData={userData}
+            error={error}/>
+        </>
+    )
 }
 
 export default App
