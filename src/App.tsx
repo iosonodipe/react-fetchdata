@@ -1,13 +1,14 @@
 import './App.css'
-import UserTable from "./UsersTable/UserTable.tsx";
+import UsersTable from "./components/UsersTable/UsersTable.tsx";
 
 import {useEffect, useState} from "react";
-import IUser from "./Models/IUser.ts";
+import IUser from "./models/IUser.ts";
+import ErrorMsg from "./components/ErrorMsg/ErrorMsg.tsx";
 
 
 function App() {
-    const [userData, setUserData] = useState<IUser[]>()
-    const [error, setError] = useState<Error | unknown>(); //come posso rendere accettabile solo Error?
+    const [userData, setUserData] = useState<IUser[]>([])
+    const [error, setError] = useState<string>(); //come posso rendere accettabile solo error?
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
@@ -22,19 +23,19 @@ function App() {
                 if (!response.ok) throw new Error('Errore nel recupero dei dati');
 
             } catch (error) {
-                setError(error);
+                error instanceof Error ? setError(error.message) : setError("Si è verificato un errore");
             }
         }
 
         fetchUserData();
     }, [])
 
-    if (error) null
+    if (error) return <ErrorMsg error={error}/>
 
     return (
         <>
             <h1>Elenco utenti</h1>
-            <UserTable
+            <UsersTable
             isLoading={isLoading}
             userData={userData}
             />
