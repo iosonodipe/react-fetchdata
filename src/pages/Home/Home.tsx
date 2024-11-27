@@ -11,7 +11,7 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        async function fetchUserData(url: string = 'https://jsonplaceholder.typicode.com/users'): Promise<void> {
+        async function fetchUsersData(url: string = 'https://jsonplaceholder.typicode.com/users'): Promise<void> {
             try {
                 setIsLoading(true);
                 const response = await fetch(url)
@@ -26,7 +26,7 @@ const Home = () => {
             }
         }
 
-        fetchUserData();
+        fetchUsersData();
     }, [])
 
     if (error) return <ErrorMsg error={error}/>
