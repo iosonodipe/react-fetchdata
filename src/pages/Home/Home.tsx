@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import './Home.css'
+import classes from './Home.module.css'
 
 import IUser from "../../models/IUser.ts";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
@@ -35,8 +35,8 @@ const Home = () => {
         <>
             {isLoading && <h3>Sto recuperando i dati...</h3>}
             {!isLoading &&
-                <div id='users-data'>
-                    <h1>Elenco utenti</h1>
+                <div id={classes.users_data}>
+                    <h2>Elenco utenti</h2>
                     <table>
                         <thead>
                         <tr>

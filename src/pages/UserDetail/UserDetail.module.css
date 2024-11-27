@@ -1,0 +1,41 @@
+h2 {
+    margin-top: 0;
+    margin-bottom: 8rem;
+}
+
+h4 {
+    margin: 0.5rem 0
+}
+
+label {
+    margin-right: 0.5rem;
+}
+
+input {
+    margin-right: 0.5rem;
+
+}
+
+form{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 2px solid lightgray;
+    background-color: #577ec9;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 0.2rem;
+    padding: 0.3rem 0.5rem;
+    background-color: #37538d;
+}
+
+#user_detail {
+    padding: 2rem;
+}
+
+#address {
+    margin-bottom: 1.5rem;
+}

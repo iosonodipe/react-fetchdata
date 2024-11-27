@@ -1,23 +1,23 @@
-#users-data {
+#users_data {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#users-data table{
+#users_data table{
     border-collapse: collapse;
 }
 
-#users-data th, td{
+#users_data th, td{
     border: 2px solid white;
     padding: 0.5rem;
 }
 
-#users-data th{
+#users_data th{
     background-color: #37538d;
 }
 
-#users-data td {
+#users_data td {
     background-color: #577ec9;
 }
 
