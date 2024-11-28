@@ -3,6 +3,7 @@ import IUser from "../../models/IUser.ts";
 import {Link, useParams} from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
 import classes from './UserDetail.module.css'
+import Input from "../../components/Input/Input.tsx";
 
 const UserDetail = () => {
     const [error, setError] = useState<string>();
@@ -41,91 +42,40 @@ const UserDetail = () => {
                     <div id={classes.content}>
                         <form>
                             <div className={classes.flex}>
-                                <div>
-                                    <label htmlFor='id'>ID</label>
-                                    <input type='number' id='id' name='id' value={userData?.id} disabled/>
-                                </div>
+                                <Input label='id' type='number' value={userData?.id}/>
                                 <div id='user-name'>
-                                    <label htmlFor='name'>NAME</label>
-                                    <input type='name' id='name' name='name' value={userData?.name} disabled/>
-                                    <label htmlFor='username'>USERNAME</label>
-                                    <input type='username' id='username' name='username' value={userData?.username}
-                                           disabled/>
+                                    <Input label='name' type='text' value={userData?.name}/>
+                                    <Input label='username' type='text' value={userData?.username}/>
                                 </div>
-                                <div>
-                                    <label htmlFor='email'>EMAIL</label>
-                                    <input type='text' id='email' name='email' value={userData?.email} disabled/>
-                                </div>
+                                <Input label='email' type='text' value={userData?.email}/>
                             </div>
                             <hr/>
                             <div id='address' className={classes.flex}>
                                 <h4>ADDRESS</h4>
                                 <div className={classes.flex_row}>
-                                    <div>
-                                        <label htmlFor='street'>STREET</label>
-                                        <input type='text' id='street' name='street' value={userData?.address.street}
-                                               disabled/>
-                                    </div>
-                                    <div>
-                                        <label htmlFor='suite'>SUITE</label>
-                                        <input type='text' id='suite' name='suite' value={userData?.address.suite}
-                                               disabled/>
-                                    </div>
+                                    <Input label='street' type='text' value={userData?.address.street}/>
+                                    <Input label='suite' type='text' value={userData?.address.suite}/>
                                 </div>
                                 <div className={classes.flex_row}>
-                                    <div>
-                                        <label htmlFor='city'>CITY</label>
-                                        <input type='text' id='city' name='city' value={userData?.address.city}
-                                               disabled/>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor='zipcode'>ZIPCODE</label>
-                                        <input type='text' id='zipcode' name='zipcode' value={userData?.address.zipcode}
-                                               disabled/>
-                                    </div>
+                                    <Input label='city' type='text' value={userData?.address.city}/>
+                                    <Input label='zipcode' type='text' value={userData?.address.zipcode}/>
                                 </div>
                                 <div className={classes.flex_row}>
-                                    <div>
-                                        <label htmlFor='lat'>LAT</label>
-                                        <input type='text' id='lat' name='lat' value={userData?.address.geo.lat}
-                                               disabled/>
-                                    </div>
-                                    <div>
-                                        <label htmlFor='long'>LONG</label>
-                                        <input type='text' id='long' name='long' value={userData?.address.geo.lng}
-                                               disabled/>
-                                    </div>
+                                    <Input label='lat' type='text' value={userData?.address.geo.lat}/>
+                                    <Input label='long' type='text' value={userData?.address.geo.lng}/>
                                 </div>
                             </div>
                             <hr/>
                             <div className={classes.flex}>
-                                <div>
-                                    <label htmlFor='phone'>PHONE</label>
-                                    <input type='text' id='phone' name='phone' value={userData?.phone} disabled/>
-                                </div>
-                                <div>
-                                    <label htmlFor='website'>WEBSITE</label>
-                                    <input type='text' id='website' name='website' value={userData?.website} disabled/>
-                                </div>
+                                <Input label='phone' type='text' value={userData?.phone}/>
+                                <Input label='website' type='text' value={userData?.website}/>
                             </div>
                             <hr/>
                             <div id="company" className={classes.flex}>
                                 <h4>COMPANY</h4>
-                                <div>
-                                    <label htmlFor='company-name'>NAME</label>
-                                    <input type='company-name' id='company-name' name='company-name'
-                                           value={userData?.company.name} disabled/>
-                                </div>
-                                <div>
-                                    <label htmlFor='catch-phrase'>CATCH PHRASE</label>
-                                    <input type='text' id='catch-phrase' name='catch-phrase'
-                                           value={userData?.company.catchPhrase} disabled/>
-                                </div>
-                                <div>
-                                    <label htmlFor='bs'>BS</label>
-                                    <input type='text' id='bs' name='bs' value={userData?.company.bs} disabled/>
-                                </div>
+                                <Input label='company-name' type='text' value={userData?.company.name}/>
+                                <Input label='catch-phrase' type='text' value={userData?.company.catchPhrase}/>
+                                <Input label='bs' type='text' value={userData?.company.bs}/>
                             </div>
                         </form>
                         <Link to='/'>Back</Link>
