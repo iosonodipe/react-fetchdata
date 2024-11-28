@@ -12,7 +12,8 @@ const Post: FC<Props> = ({post}) => {
         <>
             <form>
                 {/*<h4>TITLE</h4>*/}
-                <Input label={post.title} type='text' value={post.body}/>
+                <Input label='TITLE' type='text' value={post.title}/>
+                <Input label='BODY' type='text' value={post.body}/>
             </form>
         </>
     )

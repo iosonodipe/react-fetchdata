@@ -8,6 +8,15 @@ import endpoints from "../../../endpoints.ts";
 import IPost from "../../models/IPost.ts";
 import Post from "../../components/Post/Post.tsx";
 
+function getUserPosts(userId: number, posts: IPost[]): IPost[] {
+    let userPosts: IPost[] = [];
+
+    for(let post of posts){
+        if (post.userId == userId) userPosts.push(post);
+    }
+
+    return userPosts;
+}
 
 const UserDetail = () => {
     const [error, setError] = useState<string>();
@@ -17,7 +26,7 @@ const UserDetail = () => {
 
     const USER_ID = useParams().id;
     const USER_URL = `${endpoints.users}${USER_ID}`;
-    const POSTS_URL = `${endpoints.posts}${USER_ID}`;
+    const POSTS_URL = endpoints.posts;
 
     useEffect(() => {
         async function fetchAllUserData(): Promise<void> {
@@ -29,7 +38,7 @@ const UserDetail = () => {
                 const postsData: IPost[] = await postsResponse.json();
                 setIsLoading(false);
                 setUserData(userData);
-                setPostsData(postsData)
+                setPostsData(getUserPosts(userData.id, postsData))
 
                 if (!userResponse.ok) throw new Error('Errore nel recupero dei dati utente');
                 if (!postsResponse.ok) throw new Error('Errore nel recupero dei dati dei posts');
@@ -53,7 +62,7 @@ const UserDetail = () => {
                     <div id={classes.user_detail}>
                         <form>
                             <div className={classes.flex}>
-                                <Input label='id' type='number' value={userData?.id}/>
+                                <Input label='id' type='number' value={userData?.id.toString()}/>
                                 <div id='user-name' className={classes.flex_row}>
                                     <Input label='name' type='text' value={userData?.name}/>
                                     <Input label='username' type='text' value={userData?.username}/>
@@ -91,13 +100,13 @@ const UserDetail = () => {
                         </form>
                         <Link to='/'>BACK</Link>
                     </div>
-                    {/*<div id={classes.user_posts}>*/}
-                    {/*    {postsData.map(post =>{*/}
-                    {/*        return(*/}
-                    {/*            <Post key={post.id} post={post} />*/}
-                    {/*        )*/}
-                    {/*    })}*/}
-                    {/*</div>*/}
+                    <div id={classes.user_posts}>
+                        {postsData.map(post =>{
+                            return(
+                                <Post key={post.id} post={post} />
+                            )
+                        })}
+                    </div>
                 </>
             }
         </div>
