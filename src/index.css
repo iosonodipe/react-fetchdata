@@ -1,17 +1,38 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    --primary: #714ba4;
+    --secondary: #cda0ff;
+    --background: #d6c2e8;
+    --light: #e6dafa;
+    --button: #8b71ab;
+    --shadow: #bec0be;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+    margin: 1rem 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--background);
 }
 
-h2{
-  font-size: 3.2em;
-  text-align: center;
+h2 {
+    font-size: 3em;
+    text-align: center;
+    margin: 0.5rem 0 1.5rem 0 ;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.3rem 1rem;
+    background-color: var(--button);
+    width: fit-content;
+}
+
+a:hover {
+    background-color: var(--primary);
 }

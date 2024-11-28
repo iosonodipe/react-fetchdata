@@ -57,8 +57,8 @@ const Home = () => {
                                     <td>{user.email}</td>
                                     <td>{user.phone}</td>
                                     <td>{user.address.city}</td>
-                                    <td>
-                                        <Link to={`/user/${user.id}`}>Dettaglio</Link>
+                                    <td className={classes.button_cell}>
+                                        <Link to={`/user/${user.id}`}>DETTAGLIO</Link>
                                     </td>
                                 </tr>
                             )

@@ -1,41 +1,44 @@
-h2 {
-    margin-top: 0;
-    margin-bottom: 8rem;
-}
-
 h4 {
-    margin: 0.5rem 0
+    margin: 0 0 0.5rem 0
 }
 
 label {
     margin-right: 0.5rem;
 }
 
-input {
+#content input {
     margin-right: 0.5rem;
-
-}
-
-form{
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border: 2px solid lightgray;
-    background-color: #577ec9;
-}
-
-a{
-    text-decoration: none;
-    color: white;
-    border: 1px solid white;
-    border-radius: 0.2rem;
+    /*border-radius: 0.4rem;*/
+    /*border: 0.1rem solid var(--button);*/
+    border: 0;
+    border-bottom: 0.1rem solid var(--button);
+    background-color: transparent;
     padding: 0.3rem 0.5rem;
-    background-color: #37538d;
 }
 
-#user_detail {
-    padding: 2rem;
+form {
+    padding: 1rem;
+    width: fit-content;
+    margin-bottom: 1rem;
+    border: 0px;
+    border-radius: 1rem;
+    background-color: var(--light);
+    box-shadow: 1px 1px 40px var(--button);
 }
 
-#address {
-    margin-bottom: 1.5rem;
+#content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.flex_row{
+    display: flex;
+    gap: 1rem;
 }
