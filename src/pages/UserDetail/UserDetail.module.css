@@ -11,7 +11,7 @@ hr{
     margin: 1rem 0;
 }
 
-#content input {
+#user_detail input {
     margin-right: 0.5rem;
     /*border-radius: 0.4rem;*/
     /*border: 0.1rem solid var(--button);*/
@@ -31,7 +31,7 @@ form {
     box-shadow: 1px 1px 40px var(--button);
 }
 
-#content{
+#user_detail{
     display: flex;
     align-items: center;
     flex-direction: column;

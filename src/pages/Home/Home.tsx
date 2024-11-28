@@ -4,17 +4,21 @@ import classes from './Home.module.css'
 import IUser from "../../models/IUser.ts";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
 import {Link} from "react-router-dom";
+import endpoints from "../../../endpoints.ts";
 
 const Home = () => {
     const [userData, setUserData] = useState<IUser[]>([])
     const [error, setError] = useState<string>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const USERS_URL = endpoints.users;
+
+
     useEffect(() => {
-        async function fetchUsersData(url: string = 'https://jsonplaceholder.typicode.com/users'): Promise<void> {
+        async function fetchUsersData(): Promise<void> {
             try {
                 setIsLoading(true);
-                const response = await fetch(url)
+                const response = await fetch(USERS_URL)
                 const data: IUser[] = await response.json();
                 setIsLoading(false);
                 setUserData(data);

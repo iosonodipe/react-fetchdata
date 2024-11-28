@@ -4,42 +4,53 @@ import {Link, useParams} from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
 import classes from './UserDetail.module.css'
 import Input from "../../components/Input/Input.tsx";
+import endpoints from "../../../endpoints.ts";
+import IPost from "../../models/IPost.ts";
+import Post from "../../components/Post/Post.tsx";
+
 
 const UserDetail = () => {
     const [error, setError] = useState<string>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [userData, setUserData] = useState<IUser>()
+    const [postsData, setPostsData] = useState<IPost[]>([])
 
     const USER_ID = useParams().id;
+    const USER_URL = `${endpoints.users}${USER_ID}`;
+    const POSTS_URL = `${endpoints.posts}${USER_ID}`;
 
     useEffect(() => {
-        async function fetchUserData(url: string = `https://jsonplaceholder.typicode.com/users/${USER_ID}`): Promise<void> {
+        async function fetchAllUserData(): Promise<void> {
             try {
                 setIsLoading(true);
-                const response = await fetch(url)
-                const data: IUser = await response.json();
+                const userResponse = await fetch(USER_URL)
+                const userData: IUser = await userResponse.json();
+                const postsResponse = await fetch(POSTS_URL);
+                const postsData: IPost[] = await postsResponse.json();
                 setIsLoading(false);
-                setUserData(data);
+                setUserData(userData);
+                setPostsData(postsData)
 
-                if (!response.ok) throw new Error('Errore nel recupero dei dati');
+                if (!userResponse.ok) throw new Error('Errore nel recupero dei dati utente');
+                if (!postsResponse.ok) throw new Error('Errore nel recupero dei dati dei posts');
 
             } catch (error) {
                 error instanceof Error ? setError(error.message) : setError("Si è verificato un errore");
             }
         }
 
-        fetchUserData();
+        fetchAllUserData();
     }, [])
 
     if (error) return <ErrorMsg error={error}/>
 
     return (
-        <div id={classes.user_detail}>
+        <div id='user-detail-form'>
             <h2>DETTAGLIO UTENTE</h2>
             {isLoading && <h3>Sto recuperando i dati...</h3>}
             {!isLoading &&
                 <>
-                    <div id={classes.content}>
+                    <div id={classes.user_detail}>
                         <form>
                             <div className={classes.flex}>
                                 <Input label='id' type='number' value={userData?.id}/>
@@ -78,8 +89,15 @@ const UserDetail = () => {
                                 <Input label='bs' type='text' value={userData?.company.bs}/>
                             </div>
                         </form>
-                        <Link to='/'>Back</Link>
+                        <Link to='/'>BACK</Link>
                     </div>
+                    {/*<div id={classes.user_posts}>*/}
+                    {/*    {postsData.map(post =>{*/}
+                    {/*        return(*/}
+                    {/*            <Post key={post.id} post={post} />*/}
+                    {/*        )*/}
+                    {/*    })}*/}
+                    {/*</div>*/}
                 </>
             }
         </div>
