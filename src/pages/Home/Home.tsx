@@ -13,7 +13,6 @@ const Home = () => {
 
     const USERS_URL = endpoints.users;
 
-
     useEffect(() => {
         async function fetchUsersData(): Promise<void> {
             try {
@@ -68,7 +67,8 @@ const Home = () => {
                             )
                         })}
                         <tr>
-                            <td colSpan={userData.length} className={classes.user_counter}>NUMERO UTENTI: {userData.length}</td>
+                            <td colSpan={userData.length} className={classes.user_counter}>NUMERO
+                                UTENTI: {userData.length}</td>
                         </tr>
                         </tbody>
                     </table>
