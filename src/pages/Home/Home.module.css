@@ -59,3 +59,10 @@ h3 {
 .button_cell:hover{
     background-color: var(--primary);
 }
+
+.user_counter{
+    text-align: center;
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+}

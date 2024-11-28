@@ -35,7 +35,7 @@ const UserDetail = () => {
 
     return (
         <div id={classes.user_detail}>
-            <h2>Dettagli utente</h2>
+            <h2>DETTAGLIO UTENTE</h2>
             {isLoading && <h3>Sto recuperando i dati...</h3>}
             {!isLoading &&
                 <>
@@ -43,7 +43,7 @@ const UserDetail = () => {
                         <form>
                             <div className={classes.flex}>
                                 <Input label='id' type='number' value={userData?.id}/>
-                                <div id='user-name'>
+                                <div id='user-name' className={classes.flex_row}>
                                     <Input label='name' type='text' value={userData?.name}/>
                                     <Input label='username' type='text' value={userData?.username}/>
                                 </div>

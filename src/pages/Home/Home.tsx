@@ -36,7 +36,7 @@ const Home = () => {
             {isLoading && <h3>Sto recuperando i dati...</h3>}
             {!isLoading &&
                 <div id={classes.users_data}>
-                    <h2>Elenco utenti</h2>
+                    <h2>ELENCO UTENTI</h2>
                     <table>
                         <thead>
                         <tr>
@@ -63,9 +63,11 @@ const Home = () => {
                                 </tr>
                             )
                         })}
+                        <tr>
+                            <td colSpan={userData.length} className={classes.user_counter}>NUMERO UTENTI: {userData.length}</td>
+                        </tr>
                         </tbody>
                     </table>
-                    <h3>Contatore utenti: {userData.length}</h3>
                 </div>
             }
         </>
