@@ -36,3 +36,11 @@ a {
 a:hover {
     background-color: var(--primary);
 }
+
+input {
+    margin-right: 0.5rem;
+    border: 0;
+    border-bottom: 0.1rem solid var(--secondary);
+    background-color: transparent;
+    padding: 0.3rem 0.5rem;
+}

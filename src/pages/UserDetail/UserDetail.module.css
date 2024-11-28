@@ -11,16 +11,6 @@ hr{
     margin: 1rem 0;
 }
 
-#user_detail input {
-    margin-right: 0.5rem;
-    /*border-radius: 0.4rem;*/
-    /*border: 0.1rem solid var(--button);*/
-    border: 0;
-    border-bottom: 0.1rem solid var(--secondary);
-    background-color: transparent;
-    padding: 0.3rem 0.5rem;
-}
-
 form {
     padding: 1rem;
     width: fit-content;
