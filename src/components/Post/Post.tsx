@@ -1,6 +1,5 @@
 import {ChangeEvent, FC, SyntheticEvent, useState} from "react";
 import IPost from "../../models/IPost.ts";
-import IUser from "../../models/IUser.ts";
 import endpoints from "../../../endpoints.ts";
 import ErrorMsg from "../ErrorMsg/ErrorMsg.tsx";
 
@@ -59,6 +58,8 @@ const Post: FC<Props> = ({post}) => {
     }
 
     if (error) return <ErrorMsg error={error}/>
+
+    isLoading //da rimuovere
 
     return (
         <>
