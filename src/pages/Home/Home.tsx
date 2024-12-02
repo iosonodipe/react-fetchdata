@@ -6,8 +6,7 @@ import {useUsersData} from "../../contexts/Contexts.tsx";
 
 const Home = () => {
 
-    const { users, error } = useUsersData();
-
+    const {users, error} = useUsersData();
 
     if (error) return <ErrorMsg error={error.message}/>
 
