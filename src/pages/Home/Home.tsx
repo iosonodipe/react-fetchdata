@@ -12,10 +12,10 @@ const Home = () => {
 
     return (
         <>
-            {/*{isLoading && <h3>Sto recuperando i dati...</h3>}*/}
             <div id={classes.users_data}>
                 <h2>ELENCO UTENTI</h2>
-                <table>
+                {!users || users.length === 0 && <h3>Sto recuperando i dati...</h3>}
+                {users.length > 0 && <table>
                     <thead>
                     <tr>
                         <th scope='col'>NAME</th>
@@ -46,7 +46,7 @@ const Home = () => {
                             UTENTI: {users.length}</td>
                     </tr>
                     </tbody>
-                </table>
+                </table>}
             </div>
         </>
     )

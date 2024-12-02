@@ -3,11 +3,12 @@ import {Link, useParams} from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
 import classes from './UserDetail.module.css'
 import Input from "../../components/Input/Input.tsx";
-import Post from "../../components/Post/Post.tsx";
+import PostForm from "../../components/PostForm/PostForm.tsx";
 import {useUserData} from "../../contexts/Contexts.tsx";
+import Post from "../../components/Post/Post.tsx";
 
 const UserDetail = () => {
-    const {user, posts, error, loadUserDataAndPosts} = useUserData();
+    const {user, userPosts, error, loadUserDataAndPosts} = useUserData();
     const userId = useParams().id
 
     useEffect(() => {
@@ -62,7 +63,7 @@ const UserDetail = () => {
                     <Link to='/'>BACK</Link>
                 </div>
                 <div id={classes.user_posts}>
-                    {posts.map(post => {
+                    {userPosts.map(post => {
                         return (
                             <Post key={post.id} post={post}/>
                         )

@@ -65,7 +65,7 @@ export function useUsersData(): UsersDataContextType {
 type UserDataAndPostsContextType = {
     user?: IUser;
     setUser: (user: IUser) => void;
-    posts?: IPost[]
+    userPosts: IPost[]
     setPosts: (posts: IPost[]) => void;
     userPosts?: IPost[]
     setUserPosts: (posts: IPost[]) => void;
