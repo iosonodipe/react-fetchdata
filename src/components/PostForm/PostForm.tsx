@@ -3,6 +3,7 @@ import IPost from "../../models/IPost.ts";
 import endpoints from "../../../endpoints.ts";
 import ErrorMsg from "../ErrorMsg/ErrorMsg.tsx";
 import {useUserData} from "../../contexts/Contexts.tsx";
+import classes from "./PostForm.module.css";
 
 const PostForm = () => {
     const {user, posts, setPosts} = useUserData()
@@ -67,19 +68,21 @@ const PostForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form id={classes.post_form} onSubmit={handleSubmit}>
                 <h3>Scrivi un post</h3>
-                <div>
+                <div className={classes.flex}>
                     <label htmlFor='title'>TITLE</label>
                     <input type='text' id='title' name='title' value={post?.title} onChange={handleInputChange}/>
                 </div>
-                <div>
+                <div className={classes.flex}>
                     <label htmlFor='body'>BODY</label>
                     <input type='text' id='body' name='body' value={post?.body} onChange={handleInputChange}/>
                 </div>
                 {post.body && <p className={bodyLength > 160 ? 'red' : undefined}>Caretteri: {bodyLength}/160</p>}
-                <button type='submit' disabled={bodyLength > 160}>INVIA</button>
-                <button type='reset' onClick={handleReset}>RESET</button>
+                <div className={classes.flex_row}>
+                    <button type='submit' disabled={bodyLength > 160}>INVIA</button>
+                    <button type='reset' onClick={handleReset}>RESET</button>
+                </div>
             </form>
         </>
     )

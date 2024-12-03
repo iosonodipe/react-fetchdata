@@ -1,0 +1,16 @@
+.flex{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#post_form{
+    margin: 1rem auto 3rem auto;
+    width: 40%;
+}

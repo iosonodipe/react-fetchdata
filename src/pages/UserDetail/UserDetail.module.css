@@ -21,7 +21,7 @@ form {
     box-shadow: 1px 1px 40px var(--button);
 }
 
-#user_detail{
+.center{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -36,4 +36,8 @@ form {
 .flex_row{
     display: flex;
     gap: 1rem;
+}
+
+#post_form{
+    margin-top: 2rem;
 }

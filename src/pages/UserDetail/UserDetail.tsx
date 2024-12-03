@@ -21,7 +21,7 @@ const UserDetail = () => {
         <div id='user-detail-form'>
             <h2>DETTAGLIO UTENTE</h2>
             <>
-                <div id={classes.user_detail}>
+                <div className={classes.center}>
                     <form>
                         <div className={classes.flex}>
                             <Input label='id' type='number' value={user?.id.toString()}/>
@@ -62,10 +62,10 @@ const UserDetail = () => {
                     </form>
                     <Link to='/'>BACK</Link>
                 </div>
-                <div id="post-form">
+                <div id={classes.post_form} >
                     <PostForm/>
                 </div>
-                <div id={classes.user_posts}>
+                <div id='user-posts'>
                     {userPosts?.map(post => {
                         return (
                             <Post key={post.id} post={post}/>

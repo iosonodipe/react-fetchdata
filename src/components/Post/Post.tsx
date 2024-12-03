@@ -1,5 +1,6 @@
 import IPost from "../../models/IPost.ts";
 import {FC} from "react";
+import classes from "./Post.module.css";
 
 type Props = {
     post: IPost
@@ -8,7 +9,7 @@ type Props = {
 const Post: FC<Props> = ({post}) => {
     return (
         <>
-            <form>
+            <form className={classes.post}>
                 <h3>Post ID {post.id}</h3>
                 <div>
                     <h4>TITLE</h4>
