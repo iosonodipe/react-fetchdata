@@ -15,6 +15,7 @@ const PostForm = () => {
     const [error, setError] = useState<string>();
 
     const POSTS_URL = endpoints.posts;
+    const bodyLength = post.body.length;
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>): void {
         const value = event.target.value;
@@ -41,16 +42,25 @@ const PostForm = () => {
                 },
                 body: JSON.stringify(post)
             })
-            console.log(response.json())
-            console.log(post)
 
             setPosts(prevPosts => [...prevPosts, post])
+            handleReset()
 
             if (!response.ok) throw new Error('Errore nel POST dei dati');
 
         } catch (error) {
             if (error instanceof Error) setError(error.message)
         }
+    }
+
+    function handleReset() {
+        setPost(prevPost => {
+            return {
+                ...prevPost,
+                title: '',
+                body: ''
+            }
+        })
     }
 
     if (error) return <ErrorMsg error={error}/>
@@ -67,7 +77,9 @@ const PostForm = () => {
                     <label htmlFor='body'>BODY</label>
                     <input type='text' id='body' name='body' value={post?.body} onChange={handleInputChange}/>
                 </div>
-                <input type="submit"/>
+                {post.body && <p className={bodyLength > 160 ? 'red' : undefined}>Caretteri: {bodyLength}/160</p>}
+                <button type='submit' disabled={bodyLength > 160}>INVIA</button>
+                <button type='reset' onClick={handleReset}>RESET</button>
             </form>
         </>
     )
