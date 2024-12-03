@@ -2,7 +2,7 @@ import classes from './Home.module.css'
 
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
 import {Link} from "react-router-dom";
-import {useUsersData} from "../../contexts/Contexts.tsx";
+import {useUsersData} from "../../contexts/UsersDataContext.tsx";
 
 const Home = () => {
 

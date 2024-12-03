@@ -2,7 +2,7 @@ import {ChangeEvent, SyntheticEvent, useState} from "react";
 import IPost from "../../models/IPost.ts";
 import endpoints from "../../../endpoints.ts";
 import ErrorMsg from "../ErrorMsg/ErrorMsg.tsx";
-import {useUserData} from "../../contexts/Contexts.tsx";
+import {useUserData} from "../../contexts/UserDataAndPostsContext.tsx";
 import classes from "./PostForm.module.css";
 
 const PostForm = () => {
@@ -78,7 +78,7 @@ const PostForm = () => {
                     <label htmlFor='body'>BODY</label>
                     <input type='text' id='body' name='body' value={post?.body} onChange={handleInputChange}/>
                 </div>
-                {post.body && <p className={bodyLength > 160 ? 'red' : undefined}>Caretteri: {bodyLength}/160</p>}
+                {post.body && <p className={bodyLength > 160 ? 'red' : undefined}>Caratteri: {bodyLength}/160</p>}
                 <div className={classes.flex_row}>
                     <button type='submit' disabled={bodyLength > 160}>INVIA</button>
                     <button type='reset' onClick={handleReset}>RESET</button>

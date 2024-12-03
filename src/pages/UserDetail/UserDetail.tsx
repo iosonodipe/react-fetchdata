@@ -4,7 +4,7 @@ import ErrorMsg from "../../components/ErrorMsg/ErrorMsg.tsx";
 import classes from './UserDetail.module.css'
 import Input from "../../components/Input/Input.tsx";
 import PostForm from "../../components/PostForm/PostForm.tsx";
-import {useUserData} from "../../contexts/Contexts.tsx";
+import {useUserData} from "../../contexts/UserDataAndPostsContext.tsx";
 import Post from "../../components/Post/Post.tsx";
 
 const UserDetail = () => {

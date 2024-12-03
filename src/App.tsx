@@ -2,7 +2,8 @@ import './App.css'
 
 import router from "./Routes/Routes.tsx";
 import {RouterProvider} from "react-router-dom";
-import {UserDataAndPostsProvider, UsersDataProvider} from "./contexts/Contexts.tsx";
+import {UserDataAndPostsProvider} from "./contexts/UserDataAndPostsContext.tsx";
+import {UsersDataProvider} from "./contexts/UsersDataContext.tsx";
 
 
 function App() {
