@@ -65,12 +65,13 @@ export function useUsersData(): UsersDataContextType {
 type UserDataAndPostsContextType = {
     user?: IUser;
     setUser: (user: IUser) => void;
-    userPosts: IPost[]
-    setPosts: (posts: IPost[]) => void;
+    posts: IPost[]
+    setPosts: (posts: (prevPosts: IPost[]) => any[]) => void;
     userPosts?: IPost[]
     setUserPosts: (posts: IPost[]) => void;
     error?: Error;
-    setError: (error: Error) => void;
+    isLoading: boolean;
+    // setError: (error: Error) => void;
     loadUserDataAndPosts: (id: string | undefined) => void;
 }
 
@@ -82,7 +83,8 @@ export const UserDataAndPostsProvider = ({children}: ProviderProps) => {
     const [posts, setPosts] = useState<IPost[]>([]);
     const [userPosts, setUserPosts] = useState<IPost[]>([]);
     const [error, setError] = useState<Error>();
-    const value = {user, setUser, posts, setPosts, userPosts, setUserPosts, error, setError, loadUserDataAndPosts};
+    const [isLoading, setIsLoading] = useState(true);
+    const value = {user, setUser, posts, setPosts, userPosts, setUserPosts, error, isLoading, loadUserDataAndPosts};
 
     function getUserPosts(userId: number, posts: IPost[]): IPost[] {
         let userPosts: IPost[] = [];
@@ -95,6 +97,7 @@ export const UserDataAndPostsProvider = ({children}: ProviderProps) => {
     }
 
     async function loadUserDataAndPosts(userID: string | undefined): Promise<void> {
+        setIsLoading(true);
         try {
             if (users) {
                 let currentUser;
@@ -119,9 +122,10 @@ export const UserDataAndPostsProvider = ({children}: ProviderProps) => {
 
         } catch (error) {
             if (error instanceof Error) setError(error);
+        } finally {
+            setIsLoading(false)
         }
     }
-
 
     return <UserDataAndPostsContext.Provider value={value}>{children}</UserDataAndPostsContext.Provider>
 }

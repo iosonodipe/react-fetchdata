@@ -35,6 +35,7 @@ a {
 
 a:hover {
     background-color: var(--primary);
+
 }
 
 input {
@@ -43,4 +44,9 @@ input {
     border-bottom: 0.1rem solid var(--secondary);
     background-color: transparent;
     padding: 0.3rem 0.5rem;
+    outline: none;
+}
+
+input:focus{
+    border-bottom: 0.1rem solid var(--primary);
 }

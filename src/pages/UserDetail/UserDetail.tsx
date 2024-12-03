@@ -8,12 +8,12 @@ import {useUserData} from "../../contexts/Contexts.tsx";
 import Post from "../../components/Post/Post.tsx";
 
 const UserDetail = () => {
-    const {user, userPosts, error, loadUserDataAndPosts} = useUserData();
+    const {user, userPosts, posts, error, loadUserDataAndPosts} = useUserData();
     const userId = useParams().id
 
     useEffect(() => {
         loadUserDataAndPosts(userId)
-    }, []);
+    }, [posts]);
 
     if (error) return <ErrorMsg error={error.message}/>
 
@@ -62,8 +62,11 @@ const UserDetail = () => {
                     </form>
                     <Link to='/'>BACK</Link>
                 </div>
+                <div id="post-form">
+                    <PostForm/>
+                </div>
                 <div id={classes.user_posts}>
-                    {userPosts.map(post => {
+                    {userPosts?.map(post => {
                         return (
                             <Post key={post.id} post={post}/>
                         )
