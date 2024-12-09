@@ -30,6 +30,7 @@ export const UsersDataProvider = ({children}: ProviderProps) => {
             try {
                 const response = await fetch(USERS_URL)
                 const data: IUser[] = await response.json();
+
                 setUsers(data);
 
                 if (!response.ok) throw new Error('Errore nel recupero dei dati');
