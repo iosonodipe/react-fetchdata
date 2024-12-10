@@ -26,4 +26,13 @@ export default tseslint.config(
             ],
         },
     },
+    {
+        // Specifica regole per i file di test
+        files: ['**/*.test.ts', '**/*.spec.ts'],
+        rules: {
+            'no-unused-vars': 'off', // Disattiva il controllo sulle variabili inutilizzate
+            '@typescript-eslint/no-unused-vars': 'off', // Disattiva il controllo sulle variabili inutilizzate specifico per TypeScript
+            'import/no-unused-modules': 'off', // Disattiva il controllo sugli import inutilizzati
+        },
+    },
 )
